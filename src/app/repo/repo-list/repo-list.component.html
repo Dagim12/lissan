@@ -7,47 +7,44 @@
     <mat-tab label="Angular Repositories">
       <p>Angular Repos</p>
       <table mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
+        <ng-container matColumnDef="FullName">
+          <th mat-header-cell *matHeaderCellDef> Title </th>
           <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
-        <ng-container matColumnDef="dateOfBirth">
-          <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
-          <td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date}} </td>
+        <ng-container matColumnDef="Contributions">
+          <th mat-header-cell *matHeaderCellDef> Contributors </th>
+          <td mat-cell *matCellDef="let element"> {{element.contributions | date}} </td>
         </ng-container>
-        <ng-container matColumnDef="address">
+        <ng-container matColumnDef="Followers">
           <th mat-header-cell *matHeaderCellDef> Address </th>
           <td mat-cell *matCellDef="let element"> {{element.address}} </td>
         </ng-container>
-        <ng-container matColumnDef="details">
-          <th mat-header-cell *matHeaderCellDef> Details </th>
+        <ng-container matColumnDef="UserType">
+          <th mat-header-cell *matHeaderCellDef> User Type </th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button color="primary" (click)="redirectToDetails(element.id)">
-                <mat-icon class="mat-18">reorder</mat-icon>
-            </button>
+
           </td>
         </ng-container>
-        <ng-container matColumnDef="update">
-            <th mat-header-cell *matHeaderCellDef> Update </th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-icon-button color="accent" (click)="redirectToUpdate(element.id)">
-                  <mat-icon class="mat-18">system_update</mat-icon>
-              </button>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="delete">
-              <th mat-header-cell *matHeaderCellDef> Delete </th>
+
+        <ng-container matColumnDef="Following">
+          <th mat-header-cell *matHeaderCellDef> Following </th>
+          <td mat-cell *matCellDef="let element">
+
+          </td>
+        </ng-container>
+          <ng-container matColumnDef="Detail">
+              <th mat-header-cell *matHeaderCellDef> Detail </th>
               <td mat-cell *matCellDef="let element">
-                <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
-                    <mat-icon class="mat-18">delete</mat-icon>
-                </button>
+                <button mat-icon-button color="primary" (click)="redirectToDetails(element.id)">
+                  <mat-icon class="mat-18">preview</mat-icon>
+              </button>
               </td>
             </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </mat-tab>
-    <mat-tab label="CContributors">
+    <mat-tab label="Contributors">
        <p>All Contributors</p>
       </mat-tab>
   </mat-tab-group>
