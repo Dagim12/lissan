@@ -15,14 +15,14 @@ export class RepoListComponent implements OnInit {
 
   // ngOnInit(): void {
   // }
-  public displayedColumns = ['name', 'dateOfBirth', 'address', 'details', 'update', 'delete'
+  public displayedColumns = ['Full Name', 'Contributions', 'Followers', 'Following', 'User Type', 'delete'
 ];
   public dataSource = new MatTableDataSource<Repository>();
   constructor(private repoService: RepositoryService) { }
   ngOnInit() {
-    this.getRepos();
+    this.getContributors();
   }
-  public getRepos = () => {
+  public getContributors = () => {
     this.repoService.getData('repositories?since=364')
     .subscribe(res => {
       this.dataSource.data = res as Repository[];
