@@ -46,6 +46,21 @@
     </mat-tab>
     <mat-tab label="Contributors">
        <p>All Contributors</p>
+       <nz-table #sortTable [nzData]="contributors" nzTableLayout="fixed">
+        <thead>
+          <tr>
+            <th *ngFor="let column of listOfColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">{{ column.title }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of sortTable.data">
+            <td>{{ data.login }}</td>
+            <td>{{ data.contributions }}</td>
+            <td>{{ data.followers_url }}</td>
+            <td><a href="url">Profile</a> </td>
+          </tr>
+        </tbody>
+      </nz-table>
       </mat-tab>
   </mat-tab-group>
 </section>
