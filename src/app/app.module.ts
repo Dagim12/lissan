@@ -12,7 +12,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { RoutingModule } from './routing/routing.module';
 import { HeaderComponent } from './navigation/header/header.component';
 import { ContributorModule } from './contributor/contributor.module';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -39,6 +39,7 @@ registerLocaleData(en);
     RoutingModule,
     ContributorModule,
     FormsModule
+
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

@@ -19,10 +19,23 @@
             <td>{{ data.detail.public_repos }}</td>
             <td>{{ data.detail.followers }}</td>
             <td>{{ data.detail.public_gists }}</td>
-            <td><a href="url">Profile</a> </td>
+            <td><button nz-button nzType="primary" (click)="showModal(data.detail)">Profile</button> </td>
           </tr>
         </tbody>
       </nz-table>
       </mat-tab>
   </mat-tab-group>
 </section>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Custom Modal Title" (nzOnCancel)="handleCancel()">
+  <div *ngIf="detail">
+    <img class="img img-circle" src="{{detail.avatar_url}}">
+    <span for="name">Full Name: </span> <span id="name">{{detail.name}}</span>
+    <span for="username">User Name: </span> <span id="username">{{detail.login}}</span>
+    <span for="company">company: </span> <span id="company">{{detail.company}}</span>
+    <span for="followers">Followers: </span> <span id="followers">{{detail.followers}}</span>
+  </div>
+  <div *nzModalFooter>
+
+    <button nz-button nzType="default" (click)="handleCancel()">Close</button>
+  </div>
+</nz-modal>

@@ -5,6 +5,8 @@ import { RepositoryService } from 'src/app/apis/repository.service';
 import {Repository} from '../../models/repository.model';
 // import {Contributor} from '../../models/repository.model';
 import { Contributor } from 'src/app/models/contributor.model';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { Detail } from 'src/app/models/detail.model';
 
 @Component({
   selector: 'app-repo-list',
@@ -13,7 +15,8 @@ import { Contributor } from 'src/app/models/contributor.model';
 })
 export class RepoListComponent implements OnInit {
 
-
+  isVisible = false;
+  detail: Detail;
   // ngOnInit(): void {
   // }
   list: Array<any>;
@@ -30,7 +33,7 @@ export class RepoListComponent implements OnInit {
     },
     {
       title: 'Public Repos',
-      compare: (a: any, b: any) => a.detail.public_repos - b.detail.public_repos,
+      compare: (a: Contributor, b: Contributor) => a.detail.public_repos - b.detail.public_repos,
       priority: 1
     },
     {
@@ -52,7 +55,7 @@ export class RepoListComponent implements OnInit {
   public displayedColumns = ['FullName', 'Contributions', 'Followers', 'Following', 'UserType', 'Detail'];
   public dataSource = new MatTableDataSource<Repository>();
   contributors: Contributor[];
-  constructor(private repoService: RepositoryService) { }
+  constructor(private repoService: RepositoryService,private modalService: NzModalService) { }
   ngOnInit() {
     this.getContributors();
     // this.getRepositories();
@@ -98,5 +101,11 @@ export class RepoListComponent implements OnInit {
   public redirectToDelete = (id: string) => {
 
   }
-
+  showModal(obj): void {
+    this.isVisible = true;
+    this.detail = obj;
+  }
+  handleCancel(): void {
+    this.isVisible = false;
+  }
 }

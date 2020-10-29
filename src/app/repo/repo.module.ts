@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 const routes: Routes = [
   { path: 'repositories', component: RepoListComponent }
 ];
@@ -21,6 +23,8 @@ const routes: Routes = [
     MatIconModule,
     MatTableModule,
     NzTableModule,
+    NzModalModule,
+    NzButtonModule,
     RouterModule.forChild(routes)
   ],
   exports: [
@@ -31,7 +35,7 @@ const routes: Routes = [
     MatButtonModule,
     MatTableModule,
     MatIconModule,
-    NzTableModule,
+    NzTableModule
   ],
   declarations: [RepoListComponent]
 })
