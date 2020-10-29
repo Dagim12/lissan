@@ -11,7 +11,9 @@ export class RepositoryService {
   public getData = (route: string) => {
     return this.http.get(this.createCompleteRoute(route, environment.urlAddress));
   }
-
+  public getFromUri = (route: string) => {
+    return this.http.get(route);
+  }
   public create = (route: string, body) => {
     return this.http.post(this.createCompleteRoute(route, environment.urlAddress), body, this.generateHeaders());
   }

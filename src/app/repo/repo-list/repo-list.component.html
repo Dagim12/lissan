@@ -4,46 +4,6 @@
   </div>
   <p>In this application we are going to work with:</p>
   <mat-tab-group>
-    <mat-tab label="Angular Repositories">
-      <p>Angular Repos</p>
-      <table mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="FullName">
-          <th mat-header-cell *matHeaderCellDef> Title </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Contributions">
-          <th mat-header-cell *matHeaderCellDef> Contributors </th>
-          <td mat-cell *matCellDef="let element"> {{element.contributions | date}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Followers">
-          <th mat-header-cell *matHeaderCellDef> Address </th>
-          <td mat-cell *matCellDef="let element"> {{element.address}} </td>
-        </ng-container>
-        <ng-container matColumnDef="UserType">
-          <th mat-header-cell *matHeaderCellDef> User Type </th>
-          <td mat-cell *matCellDef="let element">
-
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="Following">
-          <th mat-header-cell *matHeaderCellDef> Following </th>
-          <td mat-cell *matCellDef="let element">
-
-          </td>
-        </ng-container>
-          <ng-container matColumnDef="Detail">
-              <th mat-header-cell *matHeaderCellDef> Detail </th>
-              <td mat-cell *matCellDef="let element">
-                <button mat-icon-button color="primary" (click)="redirectToDetails(element.id)">
-                  <mat-icon class="mat-18">preview</mat-icon>
-              </button>
-              </td>
-            </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </mat-tab>
     <mat-tab label="Contributors">
        <p>All Contributors</p>
        <nz-table #sortTable [nzData]="contributors" nzTableLayout="fixed">
@@ -56,7 +16,9 @@
           <tr *ngFor="let data of sortTable.data">
             <td>{{ data.login }}</td>
             <td>{{ data.contributions }}</td>
-            <td>{{ data.followers_url }}</td>
+            <td>{{ data.detail.public_repos }}</td>
+            <td>{{ data.detail.followers }}</td>
+            <td>{{ data.detail.public_gists }}</td>
             <td><a href="url">Profile</a> </td>
           </tr>
         </tbody>
